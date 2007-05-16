@@ -1,5 +1,5 @@
 %define name commoncpp
-%define version 1.5.5
+%define version 1.5.6
 %define release %mkrel 1
 
 %define major 2_1.5
