@@ -1,10 +1,10 @@
 %define name commoncpp
-%define version 1.5.6
+%define version 1.5.7
 %define release %mkrel 1
 
 %define major 2_1.5
 %define libname %mklibname %{name} %major
-%define libnamedev %mklibname %{name} %major -d
+%define libnamedev %mklibname %{name} -d
 
 
 Summary:	A GNU package for creating portable C++ programs
@@ -59,9 +59,10 @@ This package contains the shared library part of CommonC++.
 %package -n %libnamedev
 Summary:        A GNU package for creating portable C++ program
 Group:          Development/C++
-Requires:	%libname = %version 
-Provides:	lib%{name}2-devel = %version
+Requires:	%libname = %{version}-%{release} 
+Provides:	lib%{name}2-devel = %{version}-%{release}
 Provides:	libcommoncpp-devel
+Obsoletes:	%mklibname %{name} 2_1.5 -d
 Provides:	libCommonC++2-devel  = %{version}-%{release}
 Obsoletes:	libCommonC++2-devel
 Provides:	libCommonC++-devel
