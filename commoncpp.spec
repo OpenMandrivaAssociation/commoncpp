@@ -1,5 +1,5 @@
 %define name commoncpp
-%define version 1.5.7
+%define version 1.5.9
 %define release %mkrel 1
 
 %define major 2_1.5
@@ -18,6 +18,7 @@ Release:	%release
 Group:		Development/C++
 URL:		http://cplusplus.sourceforge.net/
 Source:		http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.bz2
+Patch0:         Doxyfile.patch
 
 License:	GPL
 BuildRoot:	%_tmppath/%name-buildroot
@@ -85,6 +86,11 @@ programs with CommonC++.
 %prep
 rm -rf $RPM_BUILD_ROOT
 %setup -q -n commoncpp2-%{version}
+{
+cd doc
+%patch0 -b .Doxyfile
+cd ..
+}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
