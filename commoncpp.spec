@@ -97,7 +97,7 @@ CFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
 CXXFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
 ./configure --prefix=%_prefix --datadir=%_datadir --libdir=%_libdir
 # it tries to run make install, so we exit with 0
-%make ||:
+make ||:
 
 %install
 rm -rf %buildroot
