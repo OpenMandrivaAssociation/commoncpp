@@ -1,8 +1,8 @@
 %define name commoncpp
-%define version 1.5.9
-%define release %mkrel 2
+%define version 1.6.0
+%define release %mkrel 1
 
-%define major 2_1.5
+%define major 2_1.6
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
 
