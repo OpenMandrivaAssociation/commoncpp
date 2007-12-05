@@ -1,27 +1,27 @@
 %define name commoncpp
 %define version 1.6.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 2_1.6
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
 
 
-Summary:	A GNU package for creating portable C++ programs
-Name:		%{name}
-Provides:	CommonC++
-Obsoletes:	CommonC++
-Provides:	CommonC++2
-Obsoletes:	CommonC++2
-Version:	%version
-Release:	%release
-Group:		Development/C++
-URL:		http://cplusplus.sourceforge.net/
-Source:		http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.bz2
+Summary:        A GNU package for creating portable C++ programs
+Name:           %{name}
+Provides:       CommonC++
+Obsoletes:      CommonC++
+Provides:       CommonC++2
+Obsoletes:      CommonC++2
+Version:        %version
+Release:        %release
+Group:	        Development/C++
+URL:	        http://www.gnutelephony.org
+Source:         http://www.gnutelephony.org/dist/tarballs/commoncpp2-%{version}.tar.bz2
 Patch0:         Doxyfile.patch
 
-License:	GPL
-BuildRoot:	%_tmppath/%name-buildroot
+License:        GPL
+BuildRoot:      %_tmppath/%name-buildroot
 BuildRequires:  doxygen libxml2-devel glibc-static-devel libstdc++-devel
 
 %description
@@ -60,16 +60,16 @@ This package contains the shared library part of CommonC++.
 %package -n %libnamedev
 Summary:        A GNU package for creating portable C++ program
 Group:          Development/C++
-Requires:	%libname = %{version}-%{release} 
-Provides:	lib%{name}2-devel = %{version}-%{release}
-Provides:	libcommoncpp-devel
-Obsoletes:	%mklibname %{name} 2_1.5 -d
-Provides:	libCommonC++2-devel  = %{version}-%{release}
-Obsoletes:	libCommonC++2-devel
-Provides:	libCommonC++-devel
-Obsoletes:	libCommonC++-devel
+Requires:       %libname = %{version}-%{release} 
+Provides:       lib%{name}2-devel = %{version}-%{release}
+Provides:       libcommoncpp-devel
+Obsoletes:      %mklibname %{name} 2_1.5 -d
+Provides:       libCommonC++2-devel  = %{version}-%{release}
+Obsoletes:      libCommonC++2-devel
+Provides:       libCommonC++-devel
+Obsoletes:      libCommonC++-devel
 
-Requires: 	libxml2-devel
+Requires:       libxml2-devel
 
 %description -n %libnamedev
 Common C++ is a GNU package which offers portable "abstraction" of system
