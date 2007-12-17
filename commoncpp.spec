@@ -21,7 +21,6 @@ Source:         http://www.gnutelephony.org/dist/tarballs/commoncpp2-%{version}.
 Patch0:         Doxyfile.patch
 
 License:        GPL
-BuildRoot:      %_tmppath/%name-buildroot
 BuildRequires:  doxygen libxml2-devel glibc-static-devel libstdc++-devel
 
 %description
