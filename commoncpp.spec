@@ -1,5 +1,5 @@
 %define name commoncpp
-%define version 1.6.1
+%define version 1.6.2
 %define release %mkrel 1
 
 %define major 2_1.6
@@ -15,9 +15,10 @@ Provides:       CommonC++2
 Obsoletes:      CommonC++2
 Version:        %version
 Release:        %release
-Group:	        Development/C++
-URL:	        http://www.gnutelephony.org
+Group:          Development/C++
+URL:            http://www.gnutelephony.org
 Source:         http://www.gnutelephony.org/dist/tarballs/commoncpp2-%{version}.tar.bz2
+Patch0:         string.patch
 
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
@@ -85,6 +86,11 @@ programs with CommonC++.
 %prep
 rm -rf $RPM_BUILD_ROOT
 %setup -q -n commoncpp2-%{version}
+{
+cd src
+%patch0 -p0 -b .StringCC
+cd -
+}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
