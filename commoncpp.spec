@@ -124,8 +124,12 @@ rm -rf %buildroot
 %_includedir/cc++
 %_libdir/pkgconfig/*.pc
 
+%if %mdkversion < 200900
 %post -n %libname -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %libname -p /sbin/ldconfig
+%endif
 
 %post -n %libnamedev
 %_install_info commoncpp2.info
