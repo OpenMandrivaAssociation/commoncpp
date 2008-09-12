@@ -1,8 +1,8 @@
 %define name commoncpp
-%define version 1.6.2
-%define release %mkrel 2
+%define version 1.7.0
+%define release %mkrel 0.839.1
 
-%define major 2_1.6
+%define major 2_1.7
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
 
@@ -18,7 +18,6 @@ Release:        %release
 Group:          Development/C++
 URL:            http://www.gnutelephony.org
 Source:         http://www.gnutelephony.org/dist/tarballs/commoncpp2-%{version}.tar.bz2
-Patch0:         string.patch
 
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
@@ -63,7 +62,7 @@ Group:          Development/C++
 Requires:       %libname = %{version}-%{release} 
 Provides:       lib%{name}2-devel = %{version}-%{release}
 Provides:       libcommoncpp-devel
-Obsoletes:      %mklibname %{name} 2_1.5 -d
+Obsoletes:      %mklibname %{name} 2_1.6 -d
 Provides:       libCommonC++2-devel  = %{version}-%{release}
 Obsoletes:      libCommonC++2-devel
 Provides:       libCommonC++-devel
@@ -86,11 +85,6 @@ programs with CommonC++.
 %prep
 rm -rf $RPM_BUILD_ROOT
 %setup -q -n commoncpp2-%{version}
-{
-cd src
-%patch0 -p0 -b .StringCC
-cd -
-}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
@@ -113,7 +107,7 @@ rm -rf %buildroot
 
 %files -n %libnamedev
 %defattr(-,root,root,0755)
-%doc AUTHORS NEWS README TODO COPYING COPYING.addendum THANKS ChangeLog doc/html doc/latex
+%doc AUTHORS NEWS README TODO COPYING COPYING.addendum THANKS ChangeLog doc/html 
 %_bindir/*/ccgnu2-config
 %_bindir/ccgnu2-config
 %_datadir/aclocal/*
