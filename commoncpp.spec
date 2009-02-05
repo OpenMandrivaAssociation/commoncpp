@@ -1,5 +1,5 @@
 %define name commoncpp
-%define version 1.7.0
+%define version 1.7.1
 %define release %mkrel 1
 
 %define major 2_1.7
@@ -17,11 +17,11 @@ Version:        %version
 Release:        %release
 Group:          Development/C++
 URL:            http://www.gnutelephony.org
-Source:         http://www.gnutelephony.org/dist/tarballs/commoncpp2-%{version}.tar.bz2
-
+Source:         http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.gz
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
-BuildRequires:  doxygen libxml2-devel glibc-static-devel libstdc++-devel
+BuildRequires:  doxygen glibc-static-devel libstdc++-devel
+BuildRequires:	libtool
 
 %description
 Common C++2 is a GNU package which offers portable "abstraction" of system
@@ -83,19 +83,15 @@ This package contains the development files and documentation needed to build
 programs with CommonC++.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
 %setup -q -n commoncpp2-%{version}
 
 %build
-CFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
-CXXFLAGS="$RPM_OPT_FLAGS -I/usr/include/libxml2/libxml/"
-./configure --prefix=%_prefix --datadir=%_datadir --libdir=%_libdir
-# it tries to run make install, so we exit with 0
-make ||:
+%configure2_5x
+make LIBTOOL=%_bindir/libtool
 
 %install
 rm -rf %buildroot
-%makeinstall 
+%makeinstall_std LIBTOOL=%_bindir/libtool
 %multiarch_binaries %buildroot/%_bindir/ccgnu2-config
 
 %clean
@@ -103,7 +99,7 @@ rm -rf %buildroot
 
 %files -n %libname
 %defattr(-,root,root,0755)
-%_libdir/*.so.*
+%_libdir/*-1.7.so.*
 
 %files -n %libnamedev
 %defattr(-,root,root,0755)
@@ -130,5 +126,3 @@ rm -rf %buildroot
 
 %postun -n %libnamedev
 %_remove_install_info commoncpp2.info
-
-
