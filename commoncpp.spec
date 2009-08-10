@@ -18,6 +18,7 @@ Release:        %release
 Group:          Development/C++
 URL:            http://www.gnutelephony.org
 Source:         http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.gz
+Patch0:		commoncpp2-1.7.3-gcc44.patch
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
 BuildRequires:  doxygen glibc-static-devel libstdc++-devel
@@ -84,6 +85,7 @@ programs with CommonC++.
 
 %prep
 %setup -q -n commoncpp2-%{version}
+%patch0 -p1
 
 %build
 %configure2_5x
