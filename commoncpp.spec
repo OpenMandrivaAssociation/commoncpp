@@ -1,6 +1,6 @@
 %define name commoncpp
 %define version 1.8.0
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 2_1.8
 %define libname %mklibname %{name} %major
@@ -41,8 +41,6 @@ Obsoletes: libCommonC++2
 Obsoletes: libCommonC++2_1.3
 Obsoletes: libCommonC++2_1.4
 Obsoletes: libCommonC++2_1.5
-# to remove old version from cooker mirrors
-Obsoletes: libCommonC++2_1.7
 
 Summary:        A GNU package for creating portable C++ program
 Group:          System/Libraries
