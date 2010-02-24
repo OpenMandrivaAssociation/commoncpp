@@ -1,8 +1,8 @@
 %define name commoncpp
-%define version 1.7.3
-%define release %mkrel 2
+%define version 1.8.0
+%define release %mkrel 1
 
-%define major 2_1.7
+%define major 2_1.8
 %define libname %mklibname %{name} %major
 %define libnamedev %mklibname %{name} -d
 
@@ -18,11 +18,10 @@ Release:        %release
 Group:          Development/C++
 URL:            http://www.gnutelephony.org
 Source:         http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.gz
-Patch0:		commoncpp2-1.7.3-gcc44.patch
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
 BuildRequires:  doxygen glibc-static-devel libstdc++-devel
-BuildRequires:	libtool
+BuildRequires:	libtool zlib-devel
 
 %description
 Common C++2 is a GNU package which offers portable "abstraction" of system
@@ -42,6 +41,8 @@ Obsoletes: libCommonC++2
 Obsoletes: libCommonC++2_1.3
 Obsoletes: libCommonC++2_1.4
 Obsoletes: libCommonC++2_1.5
+# to remove old version from cooker mirrors
+Obsoletes: libCommonC++2_1.7
 
 Summary:        A GNU package for creating portable C++ program
 Group:          System/Libraries
@@ -85,7 +86,6 @@ programs with CommonC++.
 
 %prep
 %setup -q -n commoncpp2-%{version}
-%patch0 -p1
 
 %build
 %configure2_5x
@@ -101,7 +101,7 @@ rm -rf %buildroot
 
 %files -n %libname
 %defattr(-,root,root,0755)
-%_libdir/*-1.7.so.*
+%_libdir/*-1.8.so.*
 
 %files -n %libnamedev
 %defattr(-,root,root,0755)
