@@ -1,6 +1,6 @@
 %define name commoncpp
 %define version 1.8.0
-%define release %mkrel 2
+%define release %mkrel 4
 
 %define major 2_1.8
 %define libname %mklibname %{name} %major
@@ -18,6 +18,8 @@ Release:        %release
 Group:          Development/C++
 URL:            http://www.gnutelephony.org
 Source:         http://ftp.gnu.org/gnu/commoncpp/commoncpp2-%{version}.tar.gz
+Patch0:         commoncpp2-persist.patch
+Patch1:         engine.patch
 License:        GPL
 BuildRoot:      %_tmppath/%name-buildroot
 BuildRequires:  doxygen glibc-static-devel libstdc++-devel
@@ -84,8 +86,11 @@ programs with CommonC++.
 
 %prep
 %setup -q -n commoncpp2-%{version}
+%patch0 -p0 -b .persist
+%patch1 -p0 -b .engine
 
 %build
+./autogen.sh
 %configure2_5x
 make LIBTOOL=%_bindir/libtool
 
