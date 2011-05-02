@@ -1,6 +1,6 @@
 %define name commoncpp
 %define version 1.8.1
-%define release %mkrel 1
+%define release %mkrel 2
 
 %define major 2_1.8
 %define libname %mklibname %{name} %major
@@ -95,6 +95,7 @@ make LIBTOOL=%_bindir/libtool
 %install
 rm -rf %buildroot
 %makeinstall_std LIBTOOL=%_bindir/libtool
+
 %multiarch_binaries %buildroot/%_bindir/ccgnu2-config
 
 %clean
@@ -107,8 +108,8 @@ rm -rf %buildroot
 %files -n %libnamedev
 %defattr(-,root,root,0755)
 %doc AUTHORS NEWS README TODO COPYING COPYING.addendum THANKS ChangeLog doc/html 
-%_bindir/*/ccgnu2-config
 %_bindir/ccgnu2-config
+%{multiarch_bindir}/ccgnu2-config
 %_datadir/aclocal/*
 %_infodir/*
 %_libdir/*.so
