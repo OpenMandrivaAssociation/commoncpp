@@ -1,7 +1,7 @@
 Index: src/applog.cpp
 ===================================================================
---- src/applog.cpp	(revisione 1569)
-+++ src/applog.cpp	(copia locale)
+--- ./src/applog.cpp	(revisione 1569)
++++ ./src/applog.cpp	(copia locale)
 @@ -38,6 +38,10 @@
  #include <cc++/thread.h>
  #include <cc++/slog.h>
