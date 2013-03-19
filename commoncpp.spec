@@ -7,7 +7,7 @@
 Summary:	A GNU package for creating portable C++ programs
 Name:		commoncpp2
 Version:	1.8.1
-Release:	4
+Release:	5
 Group:		Development/C++
 License:	GPLv2
 Url:		http://www.gnutelephony.org
@@ -31,7 +31,7 @@ operating systems as well as Win32, in addition to GNU/Linux.
 %package -n %{libccext2}
 Summary:	A GNU package for creating portable C++ program
 Group:		System/Libraries
-Obsoletes:	%{_lib}commoncpp2_1.8
+Obsoletes:	%{_lib}commoncpp2_1.8 < 1.8.1-4
 
 %description -n %{libccext2}
 This package contains the shared library part of CommonC++.
@@ -47,10 +47,12 @@ This package contains the shared library part of CommonC++.
 %package -n %{devname}
 Summary:	A GNU package for creating portable C++ program
 Group:		Development/C++
-Requires:	%{libccext2} = %{version}-%{release}
-Requires:	%{libccgnu2} = %{version}-%{release}
-Provides:	%{name}-devel = %{version}-%{release}
-Obsoletes:	%{_lib}commoncpp-devel
+Requires:	%{libccext2} = %{EVRD}
+Requires:	%{libccgnu2} = %{EVRD}
+Provides:	%{name}-devel = %{EVRD}
+Obsoletes:	%{_lib}commoncpp-devel < 1.8.1-4
+# Keep it for a while
+Provides:	libcommoncpp-devel = %{EVRD}
 
 %description -n %{devname}
 This package contains the development files and documentation needed to build
