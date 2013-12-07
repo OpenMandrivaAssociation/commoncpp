@@ -7,7 +7,7 @@
 Summary:	A GNU package for creating portable C++ programs
 Name:		commoncpp2
 Version:	1.8.1
-Release:	7
+Release:	8
 Group:		Development/C++
 License:	GPLv2
 Url:		http://www.gnutelephony.org
