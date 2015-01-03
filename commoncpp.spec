@@ -63,6 +63,8 @@ programs with CommonC++.
 %apply_patches
 
 %build
+export CC=gcc
+export CXX=g++
 ./autogen.sh
 %configure2_5x \
 	--disable-static
