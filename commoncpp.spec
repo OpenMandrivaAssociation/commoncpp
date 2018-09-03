@@ -13,6 +13,10 @@ License:	GPLv2
 Url:		http://www.gnutelephony.org
 Source0:	http://ftp.gnu.org/gnu/commoncpp/%{name}-%{version}.tar.gz
 Patch0:		applog_pipe.patch
+Patch1:		1.8.1-fix-buffer-overflow.patch
+Patch2:		1.8.1-fix-c++14.patch
+Patch3:		1.8.1-libgcrypt.patch
+Patch4:		1.8.1-parallel-build.patch
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	glibc-static-devel
@@ -66,14 +70,12 @@ programs with CommonC++.
 export CC=gcc
 export CXX=g++
 ./autogen.sh
-%configure2_5x \
+%configure \
 	--disable-static
 %make
 
 %install
 %makeinstall_std 
-
-%multiarch_binaries %{buildroot}%{_bindir}/ccgnu2-config
 
 %files -n %{libccext2}
 %{_libdir}/libccext2-%{api}.so.%{major}*
@@ -84,7 +86,6 @@ export CXX=g++
 %files -n %{devname}
 %doc AUTHORS NEWS README TODO COPYING COPYING.addendum THANKS ChangeLog doc/html 
 %{_bindir}/ccgnu2-config
-%{multiarch_bindir}/ccgnu2-config
 %{_includedir}/cc++
 %{_datadir}/aclocal/*
 %{_infodir}/*
