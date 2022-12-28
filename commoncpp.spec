@@ -17,6 +17,7 @@ Patch1:		1.8.1-fix-buffer-overflow.patch
 Patch2:		1.8.1-fix-c++14.patch
 Patch3:		1.8.1-libgcrypt.patch
 Patch4:		1.8.1-parallel-build.patch
+# (fedora
 Patch5:		commoncpp2-gcc9.patch
 BuildRequires:	doxygen
 BuildRequires:	libtool
