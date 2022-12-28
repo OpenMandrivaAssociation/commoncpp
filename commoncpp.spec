@@ -1,22 +1,23 @@
 %define api	1.8
 %define major	0
-%define	libccext2	%mklibname ccext2_ %{api} %{major}
-%define	libccgnu2	%mklibname ccgnu2_ %{api} %{major}
-%define devname %mklibname %{name} -d
+%define	libccext2	%mklibname ccext2
+%define	libccgnu2	%mklibname ccgnu2
+%define devname		%mklibname %{name} -d
 
 Summary:	A GNU package for creating portable C++ programs
 Name:		commoncpp2
 Version:	1.8.1
-Release:	15
+Release:	16
 Group:		Development/C++
-License:	GPLv2
-Url:		http://www.gnutelephony.org
-Source0:	http://ftp.gnu.org/gnu/commoncpp/%{name}-%{version}.tar.gz
+License:	GPLv2+ with exceptions
+URL:		https://www.gnu.org/software/commoncpp/
+Source0:	https://ftp.gnu.org/gnu/commoncpp/%{name}-%{version}.tar.gz
 Patch0:		applog_pipe.patch
 Patch1:		1.8.1-fix-buffer-overflow.patch
 Patch2:		1.8.1-fix-c++14.patch
 Patch3:		1.8.1-libgcrypt.patch
 Patch4:		1.8.1-parallel-build.patch
+Patch5:		commoncpp2-gcc9.patch
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	glibc-static-devel
@@ -63,19 +64,16 @@ This package contains the development files and documentation needed to build
 programs with CommonC++.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
-export CC=gcc
-export CXX=g++
 ./autogen.sh
 %configure \
 	--disable-static
-%make
+%make_build
 
 %install
-%makeinstall_std 
+%make_install
 
 %files -n %{libccext2}
 %{_libdir}/libccext2-%{api}.so.%{major}*
