@@ -19,6 +19,11 @@ Patch3:		1.8.1-libgcrypt.patch
 Patch4:		1.8.1-parallel-build.patch
 # (fedora)
 Patch5:		commoncpp2-gcc9.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libtool
 BuildRequires:	glibc-static-devel
 BuildRequires:	libstdc++-devel
